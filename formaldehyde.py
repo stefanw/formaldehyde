@@ -140,9 +140,11 @@ class Formaldehyde(object):
         from_path = os.path.join(self.template_path, name)
         to_path = os.path.join(self.output_path, name)
         if tree:
-            shutil.rmtree(to_path)
+            if os.path.exists(to_path):
+                shutil.rmtree(to_path)
             shutil.copytree(from_path, to_path)
         else:
+            mkdir_p(os.path.dirname(to_path))
             shutil.copy(from_path, to_path)
 
     def scaffold(self, questions):
