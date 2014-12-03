@@ -1,0 +1,22 @@
+{% raw %}
+{% if question.label == "language" %}
+<input name="{{ form[key].name }}" type="hidden" value="{{ page.language }}">
+{% else %}
+<div class="form-group">
+  <label>{{ question.label }}</label>
+  {% for choice in question.choices %}
+  <div class="radio{% if choice.value == "__other_option__" %} form-inline{% endif %}">
+    <label>
+      <input type="radio" name="{{ form[key].name }}" value="{{ choice.value }}"{% if question.required %} required{% endif %}>
+      {% if choice.value == "__other_option__" %}
+      {{ site.translations[page.language].other }}
+      <input class="form-control input-sm" name="{{ form[key].name }}.other_option_response" value="" dir="auto" aria-label="{{ question.choice_other }}" type="text">
+      {% else %}
+      {{ choice.label }}
+      {% endif %}
+    </label>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endraw %}

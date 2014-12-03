@@ -1,0 +1,17 @@
+baseurl: /
+domain: ""
+markdown: kramdown
+
+gform_key: {{ key }}
+
+languages:
+  en: "English"
+
+translations:
+  en:
+    required: This is a required question
+    required_star: Required
+    other: "Other:"
+    submit: Submit
+    projectname: Project Name
+    title: Page title

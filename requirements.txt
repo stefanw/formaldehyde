@@ -1,0 +1,4 @@
+PyYAML==3.11
+requests==2.4.3
+Jinja2==2.7.3
+lxml==3.4.0

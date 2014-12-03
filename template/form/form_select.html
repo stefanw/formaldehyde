@@ -1,0 +1,11 @@
+{% raw %}
+<div class="form-group">
+  <label>{{ question.label }}</label>
+  <select name="{{ form[key].name }}" class="form-control"{% if question.required %} required{% endif %}>
+    <option value></option>
+    {% for choice in question.choices %}
+      <option value="{{ choice.value }}">{{ choice.label }}</option>
+    {% endfor %}
+  </select>
+</div>
+{% endraw %}

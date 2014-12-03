@@ -1,0 +1,13 @@
+---
+layout: default
+
+---
+{% raw %}
+{% assign form=site.data.questions.meta %}
+{% assign questions=site.data.questions[page.language] %}
+
+<script type="text/javascript">var submitted=false;</script>
+<iframe name="iframe_txlbrchf" id="iframe_txlbrchf" style="display:none;" onload="if(typeof sent_txlbrchf!='undefined') {window.location='{{ site.domain }}{{ site.baseurl }}{{ page.language }}/thanks/';}"></iframe>
+
+<form action="https://docs.google.com/forms/d/{{ site.gform_key }}/formResponse" method="post" name="ss-form" target="iframe_txlbrchf" onsubmit="sent_txlbrchf=true">
+{% endraw %}

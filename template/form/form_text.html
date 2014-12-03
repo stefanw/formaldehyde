@@ -1,0 +1,4 @@
+<div class="form-group">
+  <label for="q_{{ question.question_number }}">{% raw %}{{ question.label }}{% endraw %}</label>
+  <input name="{% raw %}{{ form[key].name }}{% endraw %}" type="{{ question.type }}" class="form-control" id="q_{{ question.question_number }}"{% if question.required %} required{% endif %}>
+</div>
