@@ -5,7 +5,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "template/static/",
+    "template/static/vendor",
     "test",
     "tests"
   ],

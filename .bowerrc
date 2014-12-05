@@ -1,4 +1,4 @@
 {
-    "directory": "template/static",
+    "directory": "template/static/vendor",
     "analytics": false
 }
