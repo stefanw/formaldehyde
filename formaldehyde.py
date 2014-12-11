@@ -37,8 +37,10 @@ class GoogleFormParser(object):
         for qnum, question in enumerate(questions, 1):
             question_item = question.xpath('./*[contains(@class, "ss-item")]')[0]
             label = question_item.xpath('.//*[contains(@class, "ss-q-title")]')[0].text.strip()
+            description = question_item.xpath('.//*[contains(@class, "ss-secondary-text")]')[0].text
             q = {
                 'label': label,
+                'description': description.strip() if description else '',
                 'question_number': qnum,
                 'qtype': 'unknown',
                 'required': 'ss-item-required' in question_item.attrib['class']
@@ -55,7 +57,7 @@ class GoogleFormParser(object):
             elif 'ss-select' in klass:
                 q.update(self.get_select(question_item))
             else:
-                q.update({'name': 'none', 'label': 'label'})
+                q.update({'name': 'none'})
             yield q
 
     def get_radio(self, item):
@@ -95,7 +97,6 @@ class GoogleFormParser(object):
         return {
             'qtype': 'text',
             'name': text.attrib['name'],
-            'label': text.attrib['aria-label'].strip(),
             'type': text.attrib['type']
         }
 
@@ -104,7 +105,6 @@ class GoogleFormParser(object):
         return {
             'qtype': 'paragraph-text',
             'name': text.attrib['name'],
-            'label': text.attrib['aria-label'].strip()
         }
 
 
@@ -189,7 +189,8 @@ class Formaldehyde(object):
 
     def yamlify_question(self, question):
         data = {
-            'label': question['label'].strip()
+            'label': question['label'].strip(),
+            'description': question['description'].strip()
         }
 
         if 'choices' in question:

@@ -1,6 +1,9 @@
 {% raw %}
 <div class="form-group">
   <label>{{ question.label }}</label>
+  {% if question.description %}
+  <p>{{ question.description }}</p>
+  {% endif %}
   <select name="{{ form[key].name }}" class="form-control"{% if question.required %} required{% endif %}>
     <option value></option>
     {% for choice in question.choices %}
