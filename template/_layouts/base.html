@@ -28,5 +28,17 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="{{ site.baseurl }}static/vendor/jquery/dist/jquery.min.js"></script>
   <script src="{{ site.baseurl }}static/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script>
+  $(function(){
+    $('.other-input').keydown(function(){
+      $(this).parent().find('label > input').prop('checked', true);
+    });
+    $('input[value="__other_option__"]').change(function(){
+      if ($(this).prop('checked')) {
+        $(this).parent().parent().find('.other-input').focus();
+      }
+    });
+  });
+  </script>
 </body>
 </html>
