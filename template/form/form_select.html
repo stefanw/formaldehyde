@@ -1,5 +1,5 @@
 {% raw %}
-<div class="form-group">
+<div class="form-group{% if question.required %} required{% endif %}">
   <label>{{ question.label }}</label>
   {% if question.description %}
   <p>{{ question.description }}</p>

@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group{% if question.required %} required{% endif %}">
   <label for="q_{{ question.question_number }}">{% raw %}{{ question.label }}{% endraw %}</label>
   {% raw %}
     {% if question.description %}
